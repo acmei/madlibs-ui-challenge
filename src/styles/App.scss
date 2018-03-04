@@ -7,33 +7,57 @@
   background-color: $green;
   color: $white;
   text-align: center;
+  height: 100vh;
 
   .madlib-intro {
-    .title, .subtitle {
+    .madlib-title, .madlib-subtitle {
       margin: 0;
     }
 
-    .title {
+    .madlib-title {
       font-size: 2.5em;
     }
 
-    .subtitle {
+    .madlib-subtitle {
       font-size: 1.1em;
-      font-weight: 700;
-      padding: 16px 0 0 0;
+      font-weight: $bold;
+      padding-top: $space-double;
     }
   }
 
   .madlib-form {
+    fieldset {
+      border: none;
+    }
+
     label:after {
       content: ': ';
     }
 
-    input {
-      background: transparent;
-      border: none;
-      border-bottom: 2px solid $white;
-      margin-left: 4px;
+    .form-group {
+      font-size: 1.85em;
+      font-weight: $bold;
+      padding: $space 0;
+      opacity: 1;
+
+      input {
+        color: $white;
+        background: transparent;
+        border: none;
+        border-bottom: $space-half solid $white;
+        margin-left: $space-half;
+        max-width: 200px;
+      }
+    }
+
+    .form-group:not(.has-focus) {
+      font-size: 1.2em;
+      font-weight: $normal;
+      opacity: 0.25;
+
+      input {
+        border: none;
+      }
     }
   }
 
