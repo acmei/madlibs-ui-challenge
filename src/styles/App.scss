@@ -8,8 +8,8 @@
   justify-content: center;
   flex-direction: column;
   font-family: 'Noto Sans', sans-serif;
-  font-size: 18px;
-  font-weight: $bold;
+  font-size: $font-size;
+  font-weight: $W_bold;
   background-color: $green;
   color: $white;
   text-align: center;
@@ -21,11 +21,15 @@
     }
 
     .title {
-      font-size: 42px;
+      font-size: $font-size-title;
+
+      &.muted {
+        opacity: 0.25;
+        transform: scale(0.75);
+      }
     }
 
     .subtitle {
-      font-size: 18px;
       margin-top: $space-double;
 
       &:hover {
@@ -62,9 +66,9 @@
       }
     }
 
-    .form-group:not(.has-focus) {
+    .form-group:not(.has-focus){
       font-size: 1.2em;
-      font-weight: $normal;
+      font-weight: $W_normal;
       opacity: 0.25;
 
       input {

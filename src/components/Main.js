@@ -18,9 +18,11 @@ var MADLIB_TEXT = require('../madlibs/bill-of-rights');
 
 // This is the main component of the interface
 var AppComponent = React.createClass({
-  handleFormDisplay: function (e) {
+  handleSubtitleClick: function (e) {
     e.preventDefault();
     this.setState({ displayForm: !this.state.displayForm });
+    $('.title').addClass('muted');
+    $(`.${e.target.className}`).hide();
   },
   render: function () {
     var content = (
@@ -48,7 +50,7 @@ var AppComponent = React.createClass({
       <div className="main">
         <div className="madlib-intro">
           <h1 className="title">Flocabulary Madlib</h1>
-          <p href="#" className="subtitle" onClick={this.handleFormDisplay}>Fill out the form below to create your madlib</p>
+          <p href="#" className="subtitle" onClick={this.handleSubtitleClick}>Fill out the form below to create your madlib</p>
         </div>
         {content}
       </div>

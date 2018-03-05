@@ -17,12 +17,18 @@ var MadlibForm = React.createClass({
   handleKeyPress: function (e) {
     if (e.key === 'Enter') {
       e.preventDefault();
-      var parentDiv = $(`#${e.target.id}`).parent();
-      var nextDiv = parentDiv.next('.form-group');
+      var formValues = this.state.value;
 
-      parentDiv.removeClass('has-focus');
-      nextDiv.addClass('has-focus');
-      nextDiv.children('input').focus();
+      if (Object.keys(formValues).length === 8) {
+        $('#submitButton').click();
+      } else {
+        var parentDiv = $(`#${e.target.id}`).parent();
+        var nextDiv = parentDiv.next('.form-group');
+
+        parentDiv.removeClass('has-focus');
+        nextDiv.addClass('has-focus');
+        nextDiv.children('input').focus();
+      }
     }
   },
   render: function () {
@@ -42,6 +48,7 @@ var MadlibForm = React.createClass({
                 <button
                   className="submit-button"
                   type="submit"
+                  id="submitButton"
                 >
                   Make your mad lib!
                 </button>
@@ -110,6 +117,8 @@ var MadlibForm = React.createClass({
   },
 
   componentDidMount: function () {
+    $('.form-group-yourFavoriteRight').addClass('has-focus');
+    $('#tfid-7-0').focus();
     $('.madlib-form input').focus(e => {
       $('.has-focus').removeClass('has-focus');
       $(e.target).parent().addClass('has-focus');
