@@ -121,6 +121,11 @@ var MadlibForm = React.createClass({
     $('#tfid-7-0').focus();
     $('.form-group-yourFavoriteRight').addClass('show');
     $('.form-group-yourFavoriteRight').addClass('has-focus');
+
+    $('.madlib-form input').focus(e => {
+      $('.has-focus').removeClass('has-focus');
+      $(e.target).parent().addClass('has-focus');
+    })
   },
 
   onSubmit: function (event) {
