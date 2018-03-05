@@ -1,0 +1,24 @@
+.madlib-intro {
+  .title, .subtitle {
+    margin: 0;
+  }
+
+  .title {
+    font-size: $font-size-title;
+
+    &.muted {
+      @include animate(370ms);
+      opacity: 0.35;
+      transform: scale(0.75);
+    }
+  }
+
+  .subtitle {
+    font-size: $font-size-subtitle;
+    margin-top: $space-double;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

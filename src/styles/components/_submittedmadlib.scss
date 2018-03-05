@@ -1,0 +1,12 @@
+.madlib-line {
+  display: block;
+  height: 20px;
+
+  &.last-of-chunk + .madlib-line {
+    display: inline-block;
+  }
+}
+
+.user-submitted-value {
+  text-decoration: underline;
+}

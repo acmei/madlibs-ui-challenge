@@ -1,0 +1,54 @@
+.madlib-form {
+  fieldset {
+    border: none;
+    padding: 0;
+  }
+
+  label:after {
+    content: ': ';
+  }
+
+  input {
+    color: $white;
+    background: transparent;
+    border: none;
+    margin-left: $space-half;
+    max-width: 185px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .form-group.show {
+    @include animate(370ms);
+    display: block;
+    padding: $space-half 0;
+
+    &.has-focus {
+      @include animate(370ms);
+      transform: scale(1.25);
+
+      input {
+        border-bottom: $space-quarter solid $white;
+      }
+    }
+
+    &:not(.has-focus) {
+      @include animate(370ms);
+      transform: scale(1);
+      opacity: 0.25;
+    }
+  }
+
+  .form-group:not(.show) {
+    display: none;
+  }
+
+  #submitButton {
+    border-radius: $space-quarter;
+    font-size: $font-size-small;
+    margin-top: $space-double;
+    padding: $space;
+  }
+}

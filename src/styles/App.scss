@@ -1,7 +1,10 @@
+// Variables
 @import 'variables';
+
+// Font
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700');
 
-/* Base Application Styles */
+// Base Application Styles
 .main {
   display: flex;
   align-items: center;
@@ -14,95 +17,10 @@
   color: $white;
   text-align: center;
   height: 100vh;
-
-  .madlib-intro {
-    .title, .subtitle {
-      margin: 0;
-    }
-
-    .title {
-      font-size: $font-size-title;
-
-      &.muted {
-        opacity: 0.25;
-        transform: scale(0.75);
-      }
-    }
-
-    .subtitle {
-      font-size: $font-size-subtitle;
-      margin-top: $space-double;
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
-  }
-
-  .madlib-form {
-    fieldset {
-      border: none;
-      padding: 0;
-    }
-
-    label:after {
-      content: ': ';
-    }
-
-    .form-group.show {
-      padding: $space-half 0;
-      opacity: 1;
-
-      input {
-        color: $white;
-        background: transparent;
-        border: none;
-        border-bottom: $space-quarter solid $white;
-        margin-left: $space-half;
-        max-width: 200px;
-
-        &:focus {
-          outline: none;
-        }
-      }
-
-      &.has-focus {
-        transform: scale(1.125);
-      }
-    }
-
-    .form-group.show:not(.has-focus){
-      transform: scale(1);
-      opacity: 0.25;
-
-      input {
-        border: none;
-      }
-    }
-
-    .form-group:not(.show) {
-      display: none;
-    }
-
-    #submitButton {
-      border-radius: $space-quarter;
-      font-size: $font-size-small;
-      margin-top: $space-double;
-      padding: $space;
-    }
-  }
-
-  .madlib-line {
-    display: block;
-    height: 20px;
-
-    &.last-of-chunk + .madlib-line {
-      display: inline-block;
-    }
-  }
-
-  .user-submitted-value {
-    text-decoration: underline;
-  }
 }
+
+// Component Specific Styles
+@import './components/intro';
+@import './components/madlibform';
+@import './components/submittedmadlib';
 

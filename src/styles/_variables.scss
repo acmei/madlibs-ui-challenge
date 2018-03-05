@@ -18,3 +18,9 @@ $space: 16px;
 $space-half: $space / 2;
 $space-double: $space * 2;
 $space-quarter: $space / 4;
+
+/* ANIMATION MIXIN */
+@mixin animate($time) {
+  -webkit-transition: opacity $time ease, -webkit-transform $time ease;
+  transition: opacity $time ease, transform $time ease;
+}
