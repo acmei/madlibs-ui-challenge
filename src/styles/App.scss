@@ -6,17 +6,24 @@
 
 // Base Application Styles
 .main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   font-family: 'Noto Sans', sans-serif;
-  font-size: $font-size;
-  font-weight: $W_bold;
-  background-color: $green;
-  color: $white;
-  text-align: center;
   height: 100vh;
+
+  &.form {
+    color: $white;
+    font-size: $font-size;
+    font-weight: $W_bold;
+    background-color: $green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  &.submitted {
+
+  }
 }
 
 // Component Specific Styles

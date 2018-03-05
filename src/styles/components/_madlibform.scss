@@ -45,10 +45,7 @@
     display: none;
   }
 
-  #submitButton {
-    border-radius: $space-quarter;
-    font-size: $font-size-small;
-    margin-top: $space-double;
-    padding: $space;
+  button {
+    @include defaultButton;
   }
 }

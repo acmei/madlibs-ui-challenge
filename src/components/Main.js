@@ -45,9 +45,10 @@ var AppComponent = React.createClass({
           />
         )
     );
+    var mainClass = this.state.submittedValue ? 'submitted' : 'form';
 
     return (
-      <div className="main">
+      <div className={`main ${mainClass}`}>
         <div className="madlib-intro">
           <h1 className="title">Flocabulary Madlib</h1>
           <p href="#" className="subtitle" onClick={this.handleSubtitleClick}>Fill out the form below to create your madlib</p>

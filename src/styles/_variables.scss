@@ -1,5 +1,5 @@
 /* COLOR VARIABLES */
-$green: #3cbf6a;
+$green: #15ab5a;
 $black: #000;
 $white: #FFF;
 
@@ -19,8 +19,15 @@ $space-half: $space / 2;
 $space-double: $space * 2;
 $space-quarter: $space / 4;
 
-/* ANIMATION MIXIN */
+/* MIXINS */
 @mixin animate($time) {
   -webkit-transition: opacity $time ease, -webkit-transform $time ease;
   transition: opacity $time ease, transform $time ease;
+}
+
+@mixin defaultButton() {
+  border-radius: $space-quarter;
+  font-size: $font-size-small;
+  margin-top: $space-double;
+  padding: $space;
 }

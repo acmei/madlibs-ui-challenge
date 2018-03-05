@@ -1,12 +1,26 @@
-.madlib-line {
-  display: block;
-  height: 20px;
+.submitted-madlib-container {
+  font-weight: $W_bold;
+  padding: $space;
 
-  &.last-of-chunk + .madlib-line {
-    display: inline-block;
+  .madlib-line {
+    display: block;
+    height: $space * 1.5;
+
+    &.last-of-chunk + .madlib-line {
+      display: inline-block;
+    }
   }
-}
 
-.user-submitted-value {
-  text-decoration: underline;
+  .user-submitted-value {
+    color: $white;
+    background-color: $green;
+    border-radius: $space-quarter;
+    padding: 0 2px;
+  }
+
+  button {
+    @include defaultButton;
+    color: $green;
+    border: 1px solid $green;
+  }
 }
