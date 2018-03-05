@@ -7,11 +7,14 @@ $white: #FFF;
 /* FONT VARIABLES */
 $W_normal: 400;
 $W_bold: 700;
-$font-size: 18px;
+$font-size-small: 16px;
+$font-size: 32px;
 $font-size-title: 42px;
+$font-size-subtitle: 18px;
 
 
 /* SPACING VARIABLES */
-$space: 8px;
+$space: 16px;
 $space-half: $space / 2;
 $space-double: $space * 2;
+$space-quarter: $space / 4;

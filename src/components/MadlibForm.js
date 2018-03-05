@@ -26,6 +26,7 @@ var MadlibForm = React.createClass({
         var nextDiv = parentDiv.next('.form-group');
 
         parentDiv.removeClass('has-focus');
+        nextDiv.addClass('show');
         nextDiv.addClass('has-focus');
         nextDiv.children('input').focus();
       }
@@ -50,7 +51,7 @@ var MadlibForm = React.createClass({
                   type="submit"
                   id="submitButton"
                 >
-                  Make your mad lib!
+                  Make your madlib
                 </button>
               )
               : null
@@ -117,12 +118,9 @@ var MadlibForm = React.createClass({
   },
 
   componentDidMount: function () {
-    $('.form-group-yourFavoriteRight').addClass('has-focus');
     $('#tfid-7-0').focus();
-    $('.madlib-form input').focus(e => {
-      $('.has-focus').removeClass('has-focus');
-      $(e.target).parent().addClass('has-focus');
-    });
+    $('.form-group-yourFavoriteRight').addClass('show');
+    $('.form-group-yourFavoriteRight').addClass('has-focus');
   },
 
   onSubmit: function (event) {
@@ -133,10 +131,7 @@ var MadlibForm = React.createClass({
   },
   onChange: function (value, path) {
     this.setState(
-      { value: value },
-      () => {
-        this.refs.form.getComponent(path).validate();
-      }
+      { value: value }
     );
   },
   formsAreValid: function () {

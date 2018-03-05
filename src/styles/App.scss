@@ -30,6 +30,7 @@
     }
 
     .subtitle {
+      font-size: $font-size-subtitle;
       margin-top: $space-double;
 
       &:hover {
@@ -41,22 +42,22 @@
   .madlib-form {
     fieldset {
       border: none;
+      padding: 0;
     }
 
     label:after {
       content: ': ';
     }
 
-    .form-group {
-      font-size: 1.85em;
-      padding: $space 0;
+    .form-group.show {
+      padding: $space-half 0;
       opacity: 1;
 
       input {
         color: $white;
         background: transparent;
         border: none;
-        border-bottom: $space-half solid $white;
+        border-bottom: $space-quarter solid $white;
         margin-left: $space-half;
         max-width: 200px;
 
@@ -64,16 +65,30 @@
           outline: none;
         }
       }
+
+      &.has-focus {
+        transform: scale(1.125);
+      }
     }
 
-    .form-group:not(.has-focus){
-      font-size: 1.2em;
-      font-weight: $W_normal;
+    .form-group.show:not(.has-focus){
+      transform: scale(1);
       opacity: 0.25;
 
       input {
         border: none;
       }
+    }
+
+    .form-group:not(.show) {
+      display: none;
+    }
+
+    #submitButton {
+      border-radius: $space-quarter;
+      font-size: $font-size-small;
+      margin-top: $space-double;
+      padding: $space;
     }
   }
 
