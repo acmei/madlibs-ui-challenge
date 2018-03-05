@@ -44,8 +44,8 @@ var AppComponent = React.createClass({
     return (
       <div className="main">
         <div className="madlib-intro">
-          <h1 className="madlib-title">Flocabulary Madlib</h1>
-          <p className="madlib-subtitle">Fill out the form below to create your madlib</p>
+          <h1 className="title">Flocabulary Madlib</h1>
+          <p className="subtitle">Fill out the form below to create your madlib</p>
         </div>
         {content}
       </div>

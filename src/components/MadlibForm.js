@@ -14,6 +14,16 @@ var MadlibForm = React.createClass({
       endingWithLyError: 'this one has to end with "ly"'
     };
   },
+  handleKeyPress: function (e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      var parentDiv = $(`#${e.target.id}`).parent();
+      var nextDiv = parentDiv.next('.form-group');
+      parentDiv.removeClass('has-focus');
+      nextDiv.addClass('has-focus');
+      nextDiv.children('input').focus();
+    }
+  },
   render: function () {
     return (
       <div className='madlib-form'>
@@ -70,18 +80,31 @@ var MadlibForm = React.createClass({
       inputs[result[1]] = fieldType;
     }
 
+    // append a keypress handler attr to all input fields
+    var fieldNames = Object.keys(inputs);
+    var fields = {};
+    for (var i = 0; i < fieldNames.length; i++) {
+      var field = fieldNames[i];
+      if (field === 'number') {
+        fields[field] = {
+          type: 'number',
+          attrs: { onKeyPress: this.handleKeyPress }
+        }
+      } else {
+        fields[field] = {
+          attrs: { onKeyPress: this.handleKeyPress }
+        }
+      }
+    }
+
     return {
       type: t.struct(inputs),
       options: {
-        fields: {
-          number: {
-            type: 'number'
-          }
-        }
+        fields: fields
       },
       value: {},
       submitted: false,
-      inputs: inputs,
+      inputs: inputs
     };
   },
 
@@ -89,7 +112,7 @@ var MadlibForm = React.createClass({
     $('.madlib-form input').focus(e => {
       $('.has-focus').removeClass('has-focus');
       $(e.target).parent().addClass('has-focus');
-    })
+    });
   },
 
   onSubmit: function (event) {
