@@ -1,3 +1,15 @@
+.main.form {
+  color: $white;
+  font-size: $font-size;
+  font-weight: $W_bold;
+  background-color: $green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
 .madlib-form {
   fieldset {
     border: none;

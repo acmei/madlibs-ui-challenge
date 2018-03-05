@@ -22,13 +22,13 @@ var MadlibForm = React.createClass({
       if (Object.keys(formValues).length === 8) {
         $('#submitButton').click();
       } else {
-        var parentDiv = $(`#${e.target.id}`).parent();
-        var nextDiv = parentDiv.next('.form-group');
+        var $parentDiv = $(`#${e.target.id}`).parent();
+        var $nextDiv = $parentDiv.next('.form-group');
 
-        parentDiv.removeClass('has-focus');
-        nextDiv.addClass('show');
-        nextDiv.addClass('has-focus');
-        nextDiv.children('input').focus();
+        $parentDiv.removeClass('has-focus');
+        $nextDiv.addClass('show');
+        $nextDiv.addClass('has-focus');
+        $nextDiv.children('input').focus();
       }
     }
   },
@@ -118,16 +118,36 @@ var MadlibForm = React.createClass({
   },
 
   componentDidMount: function () {
+    // focus intial form field
     $('#tfid-7-0').focus();
     $('.form-group-yourFavoriteRight').addClass('show');
     $('.form-group-yourFavoriteRight').addClass('has-focus');
 
+    // enable focus on click
     $('.madlib-form input').focus(e => {
       $('.has-focus').removeClass('has-focus');
       $(e.target).parent().addClass('has-focus');
-    })
+    });
   },
+  // Handle display of error message and focusing
+  componentDidUpdate: function () {
+    var $errorDiv = $('.has-error');
+    var isErrorShowing = $errorDiv.hasClass('show');
+    var isErrorFocused = $errorDiv.hasClass('has-focus');
+    var isErrorInputFocused = $errorDiv.children('input').is(':focus');
+    var $currentFormGroup = $('input:focus').parent();
 
+    if (!isErrorShowing) {
+      $errorDiv.addClass('show');
+    }
+    if (isErrorInputFocused && !isErrorFocused) {
+      $errorDiv.addClass('has-focus');
+    }
+    if (!$currentFormGroup.hasClass('show') || !$currentFormGroup.hasClass('has-focus')) {
+      $currentFormGroup.addClass('show');
+      $currentFormGroup.addClass('has-focus');
+    }
+  },
   onSubmit: function (event) {
     event.preventDefault();
     if (this.formsAreValid()) {
@@ -138,6 +158,7 @@ var MadlibForm = React.createClass({
     this.setState(
       { value: value }
     );
+    this.refs.form.getComponent(path).validate();
   },
   formsAreValid: function () {
     return !this.refs.form.validate().errors.length;
