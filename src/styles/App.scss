@@ -3,7 +3,13 @@
 
 /* Base Application Styles */
 .main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   font-family: 'Noto Sans', sans-serif;
+  font-size: 18px;
+  font-weight: $bold;
   background-color: $green;
   color: $white;
   text-align: center;
@@ -15,13 +21,16 @@
     }
 
     .title {
-      font-size: 2.5em;
+      font-size: 42px;
     }
 
     .subtitle {
-      font-size: 1.1em;
-      font-weight: $bold;
-      padding-top: $space-double;
+      font-size: 18px;
+      margin-top: $space-double;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 
@@ -36,7 +45,6 @@
 
     .form-group {
       font-size: 1.85em;
-      font-weight: $bold;
       padding: $space 0;
       opacity: 1;
 
@@ -47,6 +55,10 @@
         border-bottom: $space-half solid $white;
         margin-left: $space-half;
         max-width: 200px;
+
+        &:focus {
+          outline: none;
+        }
       }
     }
 

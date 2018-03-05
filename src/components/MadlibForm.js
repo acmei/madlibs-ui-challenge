@@ -19,6 +19,7 @@ var MadlibForm = React.createClass({
       e.preventDefault();
       var parentDiv = $(`#${e.target.id}`).parent();
       var nextDiv = parentDiv.next('.form-group');
+
       parentDiv.removeClass('has-focus');
       nextDiv.addClass('has-focus');
       nextDiv.children('input').focus();

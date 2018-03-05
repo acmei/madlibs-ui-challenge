@@ -18,6 +18,10 @@ var MADLIB_TEXT = require('../madlibs/bill-of-rights');
 
 // This is the main component of the interface
 var AppComponent = React.createClass({
+  handleFormDisplay: function (e) {
+    e.preventDefault();
+    this.setState({ displayForm: !this.state.displayForm });
+  },
   render: function () {
     var content = (
       this.state.submittedValue
@@ -31,7 +35,7 @@ var AppComponent = React.createClass({
         )
         : (
           // check out MadlibForm.js to see the markup for this element
-          <MadlibForm
+          this.state.displayForm && <MadlibForm
             text={this.props.text}
             onSubmit={
               value => this.setState({ submittedValue: value })
@@ -40,12 +44,11 @@ var AppComponent = React.createClass({
         )
     );
 
-
     return (
       <div className="main">
         <div className="madlib-intro">
           <h1 className="title">Flocabulary Madlib</h1>
-          <p className="subtitle">Fill out the form below to create your madlib</p>
+          <p href="#" className="subtitle" onClick={this.handleFormDisplay}>Fill out the form below to create your madlib</p>
         </div>
         {content}
       </div>
@@ -54,7 +57,8 @@ var AppComponent = React.createClass({
 
   getInitialState: function () {
     return {
-      submittedValue: null
+      submittedValue: null,
+      displayForm: false
     };
   },
   getDefaultProps: function () {
