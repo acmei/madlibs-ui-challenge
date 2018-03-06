@@ -51,7 +51,12 @@ var AppComponent = React.createClass({
       <div className={`main ${mainClass}`}>
         <div className="madlib-intro">
           <h1 className="title">Flocabulary Madlib</h1>
-          <p href="#" className="subtitle" onClick={this.handleSubtitleClick}>Fill out the form below to create your madlib</p>
+          <p
+            href="#"
+            className="subtitle"
+            onClick={this.handleSubtitleClick}>
+            Fill out the form below to create your madlib
+          </p>
         </div>
         {content}
       </div>
