@@ -1,0 +1,44 @@
+.main.submitted {
+  .madlib-intro {
+    .title {
+      color: $green;
+      opacity: 1;
+      margin-top: $space-double;
+    }
+  }
+}
+
+.submitted-madlib-container {
+  font-weight: $W_bold;
+  margin: ($space-double * 1.5) ($space * 11.3) 0;
+
+  .submitted-madlib {
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    columns: 2;
+
+    .madlib-line {
+      display: block;
+      min-height: $space * 1.75;
+    }
+
+    .user-submitted-value {
+      color: $white;
+      background-color: $green;
+      border-radius: $space-quarter;
+      font-weight: $W_normal;
+      padding: 0 2px;
+      margin: 2px;
+    }
+  }
+
+  button {
+    @include defaultButton;
+    color: $green;
+    border: 1px solid $green;
+    margin: 0;
+    position: absolute;
+    top: $space-double;
+    right: $space * 19;
+  }
+}

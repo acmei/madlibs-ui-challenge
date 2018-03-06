@@ -1,7 +1,6 @@
 // attempt to reset browser differences in default CSS
 require('normalize.css/normalize.css');
 // this file is where styles should go
-require('styles/App.css');
 require('styles/App.scss');
 
 // Flocabulary uses React extensively. This exercise is built with it
@@ -19,10 +18,16 @@ var MADLIB_TEXT = require('../madlibs/bill-of-rights');
 
 // This is the main component of the interface
 var AppComponent = React.createClass({
-  render: function() {
+  handleSubtitleClick: function (e) {
+    e.preventDefault();
+    this.setState({ displayForm: !this.state.displayForm });
+    $('.title').addClass('muted');
+    $(`.${e.target.className}`).hide();
+  },
+  render: function () {
     var content = (
       this.state.submittedValue
-      ? (
+        ? (
           // check out SubmittedMadlib.js to see the markup for this element
           <SubmittedMadlib
             reset={this.reset}
@@ -30,55 +35,49 @@ var AppComponent = React.createClass({
             value={this.state.submittedValue}
           />
         )
-      : (
+        : (
           // check out MadlibForm.js to see the markup for this element
-          <MadlibForm
+          this.state.displayForm && <MadlibForm
             text={this.props.text}
             onSubmit={
-              value => this.setState({submittedValue: value})
+              value => this.setState({ submittedValue: value })
             }
           />
         )
     );
-
+    var mainClass = this.state.submittedValue ? 'submitted' : 'form';
 
     return (
-      // this is the `jsx` which you can alter to your needs. Edit it just
-      // like HTML. use `className='some-class'` instead of
-      // `class='some-class'`. Everything has to be
-      // contained in one single element in the end, so
-      //
-      // **ERROR**
-      // return (
-      //   <div></div>
-      //   <p></p>
-      // )
-      // **GOOD**
-      // return (
-      //   <div>
-      //     <div></div>
-      //     <p></p>
-      //   </div>
-      // )
-      <div className="main">
-        <h1>FLOCABULARY MADLIB</h1>
+      <div className={`main ${mainClass}`}>
+        <div className="madlib-intro">
+          <h1 className="title">Flocabulary Madlib</h1>
+          <p
+            href="#"
+            className="subtitle"
+            onClick={this.handleSubtitleClick}>
+            Fill out the form below to create your madlib
+          </p>
+        </div>
         {content}
       </div>
     );
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
-      submittedValue: null
+      submittedValue: null,
+      displayForm: false
     };
   },
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       text: MADLIB_TEXT
     };
   },
-  reset: function() {
+  reset: function () {
     this.setState(this.getInitialState());
+    $('.title').removeClass('muted');
+    $('.subtitle').show();
   }
 });
 

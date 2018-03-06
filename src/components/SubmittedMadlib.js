@@ -2,19 +2,17 @@ var React = require('react');
 
 var SubmittedMadlib = React.createClass({
 
-  render: function() {
+  render: function () {
     var filledInMadlib = this.getFilledInMadlib();
-
     return (
       // this is what creates the displayed finished
       // madlib
       <div className='submitted-madlib-container'>
-        <h2>Your madlib:</h2>
         <button
-        	className='back-button'
+          className='back-button'
           onClick={this.props.reset}
         >
-          Go back
+          Start over
         </button>
         <div className='submitted-madlib'>
           {filledInMadlib}
@@ -23,8 +21,7 @@ var SubmittedMadlib = React.createClass({
     );
   },
 
-  getFilledInMadlib: function() {
-
+  getFilledInMadlib: function () {
     var blankRegexp = /%&(.*?)&%/gi;
     return this.props.text.split('\n').map(
       (line, i) => (
@@ -41,14 +38,14 @@ var SubmittedMadlib = React.createClass({
                   key={`${chunk}${i}`}
                   className={
                     this.props.value[chunk]
-                    ? 'user-submitted-value'
-                    : ''
+                      ? 'user-submitted-value'
+                      : ''
                   }
                 >
                   {
                     this.props.value[chunk]
-                    ? this.props.value[chunk]
-                    : chunk
+                      ? this.props.value[chunk]
+                      : chunk
                   }
                 </span>
               )
