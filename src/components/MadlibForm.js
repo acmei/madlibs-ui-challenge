@@ -116,7 +116,6 @@ var MadlibForm = React.createClass({
       inputs: inputs
     };
   },
-
   componentDidMount: function () {
     // focus intial form field
     $('#tfid-7-0').focus();

@@ -71,6 +71,8 @@ var AppComponent = React.createClass({
   },
   reset: function () {
     this.setState(this.getInitialState());
+    $('.title').removeClass('muted');
+    $('.subtitle').show();
   }
 });
 
