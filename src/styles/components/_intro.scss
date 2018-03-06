@@ -8,7 +8,7 @@
 
     &.muted {
       @include animate(370ms);
-      opacity: 0.35;
+      opacity: 0.25;
       transform: scale(0.75);
     }
   }

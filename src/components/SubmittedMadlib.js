@@ -4,7 +4,7 @@ var SubmittedMadlib = React.createClass({
 
   render: function () {
     var filledInMadlib = this.getFilledInMadlib();
-
+    console.log('this.props');
     return (
       // this is what creates the displayed finished
       // madlib
